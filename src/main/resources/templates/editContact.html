@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<body>
+<th:block th:replace="~{layout :: copy}"></th:block>
+<form th:action="@{/}" method="get">
+    <button type="submit" class="btn btn-primary mt-3 ml-5">Back</button>
+</form>
+<div class="pt-4 pl-5"> Edit contact </div>
+<form th:action="@{/editContact}" method="post">
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label"> Name : </label>
+        <div class="col-sm-7">
+            <input type="text" name="name" class="form-control" th:value="${contact.name}" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label"> Number: </label>
+        <div class="col-sm-7">
+            <input type="text" name="number" class="form-control" th:value="${contact.getNumber()}" required/>
+        </div>
+    </div>
+    <input type="hidden" name="contactId" th:value="${contact.getId()}"/>
+    <div class="pl-5"><input type="submit" class="btn btn-success mb-2" value="Edit"/></div>
+</form>
